@@ -1,0 +1,8 @@
+{
+  "name": "Integrity Overseas - Trusted Study Abroad Consultant",
+  "description": "Professional overseas education consultancy specializing in transparent, student-centric guidance for global education paths.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
