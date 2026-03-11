@@ -3,51 +3,51 @@ import React, { useState, useEffect } from 'react';
 import { GoogleGenAI } from "@google/genai";
 
 const popularCourses = [
-  { 
-    title: 'MSc Data Science & AI', 
-    level: 'Postgraduate', 
-    duration: '1-2 Years', 
-    country: 'UK, USA, Germany', 
+  {
+    title: 'MSc Data Science & AI',
+    level: 'Postgraduate',
+    duration: '1-2 Years',
+    country: 'UK, USA, Germany',
     img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=600',
     category: 'STEM'
   },
-  { 
-    title: 'MBA in Global Business', 
-    level: 'Postgraduate', 
-    duration: '12-18 Months', 
-    country: 'USA, UK, Singapore', 
+  {
+    title: 'MBA in Global Business',
+    level: 'Postgraduate',
+    duration: '12-18 Months',
+    country: 'USA, UK, Singapore',
     img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=600',
     category: 'BUSINESS'
   },
-  { 
-    title: 'BSc Computer Science', 
-    level: 'Undergraduate', 
-    duration: '3-4 Years', 
-    country: 'USA, Canada, Australia', 
+  {
+    title: 'BSc Computer Science',
+    level: 'Undergraduate',
+    duration: '3-4 Years',
+    country: 'USA, Canada, Australia',
     img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=600',
     category: 'STEM'
   },
-  { 
-    title: 'Masters in Public Health', 
-    level: 'Postgraduate', 
-    duration: '2 Years', 
-    country: 'UK, Canada, Australia', 
+  {
+    title: 'Masters in Public Health',
+    level: 'Postgraduate',
+    duration: '2 Years',
+    country: 'UK, Canada, Australia',
     img: 'https://images.unsplash.com/photo-1505751172107-57325a3d3319?auto=format&fit=crop&q=80&w=600',
     category: 'HEALTHCARE'
   },
-  { 
-    title: 'Bachelor of Architecture', 
-    level: 'Undergraduate', 
-    duration: '5 Years', 
-    country: 'UK, USA, UAE', 
+  {
+    title: 'Bachelor of Architecture',
+    level: 'Undergraduate',
+    duration: '5 Years',
+    country: 'UK, USA, UAE',
     img: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80&w=600',
     category: 'ARTS & DESIGN'
   },
-  { 
-    title: 'MA in International Relations', 
-    level: 'Postgraduate', 
-    duration: '1-2 Years', 
-    country: 'UK, Ireland, France', 
+  {
+    title: 'MA in International Relations',
+    level: 'Postgraduate',
+    duration: '1-2 Years',
+    country: 'UK, Ireland, France',
     img: 'https://images.unsplash.com/photo-1521791136064-7986c29596ba?auto=format&fit=crop&q=80&w=600',
     category: 'HUMANITIES'
   },
@@ -78,7 +78,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onApply }) => {
     try {
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       const prompt = `A professional, clean and high-quality stock photo representing a ${course.title} degree course. Educational setting, student studying, or relevant subject imagery. No text on image. Cinematic lighting.`;
-      
+
       const response = await ai.models.generateContent({
         model: 'gemini-2.5-flash-image',
         contents: { parts: [{ text: prompt }] },
@@ -112,20 +112,20 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onApply }) => {
       <div className="h-60 relative overflow-hidden bg-slate-50">
         {isGenerating ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-100 z-10">
-            <div className="w-8 h-8 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mb-2"></div>
-            <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest">Generating Visual...</p>
+            <div className="w-8 h-8 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-2"></div>
+            <p className="text-[10px] font-black text-primary uppercase tracking-widest">Generating Visual...</p>
           </div>
         ) : (
-          <img 
-            src={imgSrc} 
-            alt={course.title} 
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+          <img
+            src={imgSrc}
+            alt={course.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             onError={handleImageError}
           />
         )}
         <div className="absolute top-4 left-6">
           <div className="bg-white/95 backdrop-blur-md px-5 py-2 rounded-full shadow-lg border border-slate-100">
-            <span className="text-[10px] font-black text-blue-600 tracking-[0.1em] uppercase">
+            <span className="text-[10px] font-black text-primary tracking-[0.1em] uppercase">
               {course.category}
             </span>
           </div>
@@ -137,32 +137,32 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onApply }) => {
         <h3 className="text-2xl font-black text-slate-900 mb-8 leading-tight tracking-tight">
           {course.title}
         </h3>
-        
+
         <div className="space-y-5 mb-10 flex-1">
           <div className="flex items-center gap-4 text-slate-500">
             <div className="w-5 flex justify-center">
-               <i className="fa-solid fa-graduation-cap text-blue-500 text-lg"></i>
+              <i className="fa-solid fa-graduation-cap text-primary text-lg"></i>
             </div>
             <span className="text-lg font-medium">{course.level}</span>
           </div>
           <div className="flex items-center gap-4 text-slate-500">
             <div className="w-5 flex justify-center">
-              <i className="fa-solid fa-clock text-blue-500 text-lg"></i>
+              <i className="fa-solid fa-clock text-primary text-lg"></i>
             </div>
             <span className="text-lg font-medium">{course.duration}</span>
           </div>
           <div className="flex items-center gap-4 text-slate-500">
             <div className="w-5 flex justify-center">
-              <i className="fa-solid fa-earth-americas text-blue-500 text-lg"></i>
+              <i className="fa-solid fa-earth-americas text-primary text-lg"></i>
             </div>
             <span className="text-lg font-medium">{course.country}</span>
           </div>
         </div>
 
         {/* Button - Outlined Rounded Style from Screenshot */}
-        <button 
+        <button
           onClick={onApply}
-          className="w-full py-5 bg-white border border-slate-200 rounded-[1.5rem] font-black text-blue-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 hover:shadow-xl hover:shadow-blue-100 transition-all active:scale-95 duration-300">
+          className="w-full py-5 bg-white border border-slate-200 rounded-[1.5rem] font-black text-primary hover:bg-primary hover:text-white hover:border-primary hover:shadow-xl hover:shadow-primary/10 transition-all active:scale-95 duration-300">
           View Universities
         </button>
       </div>
@@ -191,24 +191,24 @@ const CoursesHub: React.FC<CoursesHubProps> = ({ onApply }) => {
       <section className="py-24 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-5 py-2 bg-blue-50 text-blue-600 rounded-full text-[10px] font-black mb-6 uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-5 py-2 bg-primary/5 text-primary rounded-full text-[10px] font-black mb-6 uppercase tracking-widest">
               <i className="fa-solid fa-magnifying-glass"></i> Tailored Education Paths
             </div>
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">Global Course <br/><span className="text-blue-600">Navigator</span></h2>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">Global Course <br /><span className="text-primary">Navigator</span></h2>
             <p className="text-xl text-slate-500 max-w-2xl mx-auto mb-12">Search through 80,000+ courses across the globe. From Foundation to PhD.</p>
-            
-            <div className="flex flex-col md:flex-row gap-4 max-w-4xl mx-auto bg-slate-50 p-6 rounded-[3rem] border border-slate-100 shadow-xl shadow-blue-900/5">
+
+            <div className="flex flex-col md:flex-row gap-4 max-w-4xl mx-auto bg-slate-50 p-6 rounded-[3rem] border border-slate-100 shadow-xl shadow-primary/30">
               <div className="relative flex-[2]">
                 <i className="fa-solid fa-magnifying-glass absolute left-6 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   placeholder="What do you want to study?"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-14 pr-6 py-5 rounded-[2.5rem] border border-slate-200 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all text-lg font-medium"
+                  className="w-full pl-14 pr-6 py-5 rounded-[2.5rem] border border-slate-200 outline-none focus:ring-4 focus:ring-primary/20 focus:border-primary transition-all text-lg font-medium"
                 />
               </div>
-              <button className="bg-blue-600 text-white px-10 py-5 rounded-[2.5rem] font-black hover:bg-blue-700 transition-all shadow-lg hover:scale-105 active:scale-95">
+              <button className="bg-primary text-white px-10 py-5 rounded-[2.5rem] font-black hover:bg-primary transition-all shadow-lg hover:scale-105 active:scale-95">
                 Search Now
               </button>
             </div>
@@ -216,23 +216,23 @@ const CoursesHub: React.FC<CoursesHubProps> = ({ onApply }) => {
 
           {/* Categories */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4 mb-20">
-            <button 
+            <button
               onClick={() => setActiveCategory('ALL')}
-              className={`p-6 rounded-[2.5rem] border transition-all text-center flex flex-col items-center justify-center gap-3 ${activeCategory === 'ALL' ? 'bg-blue-600 text-white border-blue-600 shadow-xl shadow-blue-200' : 'bg-slate-50 border-slate-100 text-slate-600 hover:bg-white hover:shadow-lg'}`}
+              className={`p-6 rounded-[2.5rem] border transition-all text-center flex flex-col items-center justify-center gap-3 ${activeCategory === 'ALL' ? 'bg-primary text-white border-primary shadow-xl shadow-primary/10' : 'bg-slate-50 border-slate-100 text-slate-600 hover:bg-white hover:shadow-lg'}`}
             >
               <div className="text-2xl"><i className="fa-solid fa-layer-group"></i></div>
               <p className="font-black text-xs">ALL FIELDS</p>
             </button>
             {courseCategories.map((cat, i) => (
-              <button 
+              <button
                 key={i}
                 onClick={() => setActiveCategory(cat.name)}
-                className={`p-6 rounded-[2.5rem] border transition-all text-center flex flex-col items-center justify-center gap-3 ${activeCategory === cat.name ? 'bg-blue-600 text-white border-blue-600 shadow-xl shadow-blue-200' : 'bg-slate-50 border-slate-100 text-slate-600 hover:bg-white hover:shadow-lg'}`}
+                className={`p-6 rounded-[2.5rem] border transition-all text-center flex flex-col items-center justify-center gap-3 ${activeCategory === cat.name ? 'bg-primary text-white border-primary shadow-xl shadow-primary/10' : 'bg-slate-50 border-slate-100 text-slate-600 hover:bg-white hover:shadow-lg'}`}
               >
                 <div className="text-2xl"><i className={`fa-solid ${cat.icon}`}></i></div>
                 <div className="space-y-1">
-                   <p className="font-black text-xs leading-none">{cat.name}</p>
-                   <p className={`text-[8px] uppercase font-black tracking-widest ${activeCategory === cat.name ? 'text-blue-100' : 'text-slate-400'}`}>{cat.count}</p>
+                  <p className="font-black text-xs leading-none">{cat.name}</p>
+                  <p className={`text-[8px] uppercase font-black tracking-widest ${activeCategory === cat.name ? 'text-primary/50' : 'text-slate-400'}`}>{cat.count}</p>
                 </div>
               </button>
             ))}
@@ -259,16 +259,16 @@ const CoursesHub: React.FC<CoursesHubProps> = ({ onApply }) => {
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-slate-900 rounded-[4.5rem] p-16 lg:p-24 text-white relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full"></div>
+            <div className="absolute top-0 right-0 w-96 h-96 bg-primary blur-[120px] rounded-full"></div>
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div>
-                <h2 className="text-4xl md:text-6xl font-black mb-10 leading-tight">Future-Proof <br/>Your Global Career</h2>
+                <h2 className="text-4xl md:text-6xl font-black mb-10 leading-tight">Future-Proof <br />Your Global Career</h2>
                 <p className="text-xl text-slate-400 leading-relaxed mb-12">
                   Choosing the right course is as important as choosing the right university. GlobalPath's counselors analyze industry trends to ensure your degree has maximum ROI in tomorrow's economy.
                 </p>
                 <div className="flex flex-wrap gap-6">
                   <div className="flex items-center gap-4 bg-white/5 border border-white/10 px-8 py-5 rounded-[2rem]">
-                    <i className="fa-solid fa-shield-halved text-blue-400 text-xl"></i>
+                    <i className="fa-solid fa-shield-halved text-primary text-xl"></i>
                     <span className="font-black uppercase text-sm tracking-widest">High ROI Focus</span>
                   </div>
                   <div className="flex items-center gap-4 bg-white/5 border border-white/10 px-8 py-5 rounded-[2rem]">
@@ -287,7 +287,7 @@ const CoursesHub: React.FC<CoursesHubProps> = ({ onApply }) => {
                     { step: '04', title: 'Visa Approval', desc: 'Expert guidance for seamless departure.' },
                   ].map((item, i) => (
                     <div key={i} className="flex gap-8 relative">
-                      <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center font-black text-lg flex-shrink-0 z-10 shadow-lg shadow-blue-500/30">{item.step}</div>
+                      <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center font-black text-lg flex-shrink-0 z-10 shadow-lg shadow-primary/30">{item.step}</div>
                       <div>
                         <p className="font-black text-xl mb-1">{item.title}</p>
                         <p className="text-base text-slate-400">{item.desc}</p>

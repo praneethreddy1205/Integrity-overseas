@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { getEducationCounseling } from '../services/geminiService';
 import { RecommendationResponse } from '../types';
 
-const CONTACT_NUMBER = "919014614826";
+const CONTACT_NUMBER = "917680976577";
 
 const AIAssistant: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -49,7 +49,7 @@ const AIAssistant: React.FC = () => {
       <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
         <i className="fa-solid fa-robot text-[200px] text-primary"></i>
       </div>
-      
+
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-[40px] shadow-2xl overflow-hidden border border-neutral-dark">
           <div className="grid grid-cols-1 lg:grid-cols-5 h-full">
@@ -91,18 +91,18 @@ const AIAssistant: React.FC = () => {
                   <div className="space-y-6">
                     <div>
                       <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Academic Background</label>
-                      <input 
+                      <input
                         value={formData.background}
-                        onChange={(e) => setFormData({...formData, background: e.target.value})}
+                        onChange={(e) => setFormData({ ...formData, background: e.target.value })}
                         className="w-full px-6 py-4 rounded-2xl border border-neutral-dark focus:border-primary outline-none font-medium"
                         placeholder="e.g. BSc in Computer Science, 8.5 CGPA"
                       />
                     </div>
                     <div>
                       <label className="block text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Budget Range</label>
-                      <select 
+                      <select
                         value={formData.budget}
-                        onChange={(e) => setFormData({...formData, budget: e.target.value})}
+                        onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                         className="w-full px-6 py-4 rounded-2xl border border-neutral-dark focus:border-primary outline-none font-bold text-secondary"
                       >
                         <option value="">Select Range</option>
@@ -112,7 +112,7 @@ const AIAssistant: React.FC = () => {
                       </select>
                     </div>
                   </div>
-                  <button 
+                  <button
                     onClick={() => setStep(2)}
                     disabled={!formData.background || !formData.budget}
                     className="w-full bg-primary hover:bg-primary-dark text-white py-5 rounded-2xl font-black shadow-xl shadow-primary/20 transition-all disabled:opacity-50"
@@ -126,9 +126,9 @@ const AIAssistant: React.FC = () => {
                 <div className="space-y-8 animate-fadeIn">
                   <h3 className="text-2xl font-black text-secondary">What are your interests?</h3>
                   <div className="space-y-6">
-                    <input 
+                    <input
                       value={formData.interest}
-                      onChange={(e) => setFormData({...formData, interest: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
                       className="w-full px-6 py-4 rounded-2xl border border-neutral-dark focus:border-primary outline-none font-medium"
                       placeholder="e.g. Artificial Intelligence, Marketing"
                     />
@@ -146,7 +146,7 @@ const AIAssistant: React.FC = () => {
                   </div>
                   <div className="flex gap-4">
                     <button onClick={() => setStep(1)} className="flex-1 bg-neutral py-5 rounded-2xl font-black text-slate-500 border border-neutral-dark">Back</button>
-                    <button 
+                    <button
                       onClick={handleConsult}
                       disabled={!formData.interest}
                       className="flex-[2] bg-primary hover:bg-primary-dark text-white py-5 rounded-2xl font-black shadow-xl"
@@ -164,7 +164,7 @@ const AIAssistant: React.FC = () => {
                     <p className="text-secondary text-sm leading-relaxed font-medium">{recommendation.advice}</p>
                   </div>
                   <button onClick={handleShareWithExpert} className="w-full bg-secondary text-white py-5 rounded-2xl font-black flex items-center justify-center gap-4 hover:bg-secondary-light transition-all shadow-xl">
-                     <i className="fa-brands fa-whatsapp text-primary"></i> Discuss with Senior Consultant
+                    <i className="fa-brands fa-whatsapp text-primary"></i> Discuss with Senior Consultant
                   </button>
                   <button onClick={() => setStep(1)} className="w-full bg-neutral text-slate-500 py-4 rounded-2xl font-black border border-neutral-dark">Start Over</button>
                 </div>

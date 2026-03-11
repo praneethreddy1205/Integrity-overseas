@@ -68,22 +68,62 @@ interface CountryDetailHubProps {
   onBook?: () => void;
 }
 
+const countryFlags: Record<string, string> = {
+  UK: "https://flagcdn.com/gb.svg",
+  USA: "https://flagcdn.com/us.svg",
+  Canada: "https://flagcdn.com/ca.svg",
+  Australia: "https://flagcdn.com/au.svg",
+  Europe: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg",
+  "New Zealand": "https://flagcdn.com/nz.svg"
+};
+
 const CountryDetailHub: React.FC<CountryDetailHubProps> = ({ country, onBook }) => {
   const data = countryDataLookup[country] || countryDataLookup.UK;
+  const flagUrl = countryFlags[country];
 
   return (
     <section className="bg-white">
       <div className="pt-24 pb-32 bg-white relative overflow-hidden">
         <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12">
 
-          <div className="mb-16 md:mb-24 animate-fadeIn">
-            <div className="inline-flex items-center gap-2 px-5 py-2 bg-neutral text-slate-400 rounded-full text-[10px] font-black mb-6 uppercase tracking-[0.2em] border border-neutral-dark">
-              <i className="fa-solid fa-earth-americas text-primary"></i> Study Abroad Guide
+          <div className="mb-16 md:mb-24 animate-fadeIn relative p-8 -m-8 rounded-[3rem] overflow-hidden">
+            {flagUrl && (
+              <div
+                className="absolute inset-0 z-0 opacity-40 mix-blend-multiply pointer-events-none scale-150"
+                style={{
+                  backgroundImage: `url(${flagUrl})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }}
+              />
+            )}
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 px-5 py-2 bg-neutral text-slate-400 rounded-full text-[10px] font-black mb-6 uppercase tracking-[0.2em] border border-neutral-dark">
+                <i className="fa-solid fa-earth-americas text-primary"></i> Study Abroad Guide
+              </div>
+              <h1 className="text-5xl md:text-9xl font-black text-[#012169] leading-none tracking-tighter max-w-5xl flex flex-col items-start gap-2 md:gap-4">
+                <span>Why Study in</span>
+                <span className="inline-flex items-center uppercase whitespace-nowrap">
+                  <span
+                    className={flagUrl ? "drop-shadow-md" : "text-primary"}
+                    style={flagUrl ? {
+                      backgroundImage: `url(${flagUrl})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat',
+                      WebkitBackgroundClip: 'text',
+                      backgroundClip: 'text',
+                      color: 'transparent',
+                      WebkitTextFillColor: 'transparent'
+                    } : {}}
+                  >
+                    {country}
+                  </span>
+                  <span className="text-[#012169] font-black ml-1 md:ml-3">?</span>
+                </span>
+              </h1>
+              <div className="w-32 h-3 bg-primary rounded-full mt-10"></div>
             </div>
-            <h1 className="text-5xl md:text-9xl font-black text-secondary leading-none tracking-tighter max-w-5xl">
-              Why Study in <span className="text-primary block sm:inline uppercase">{country}?</span>
-            </h1>
-            <div className="w-32 h-3 bg-primary rounded-full mt-10"></div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">

@@ -47,12 +47,12 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ view = 'global' }) => {
           {events.map((event, i) => (
             <div key={i} className="group bg-white p-6 md:p-8 rounded-3xl border border-slate-100 flex flex-col md:flex-row items-center justify-between hover:shadow-xl transition-all gap-8 animate-fadeIn">
               <div className="flex flex-col md:flex-row items-center gap-8 w-full md:w-auto">
-                <div className="flex-shrink-0 w-20 h-20 bg-blue-600 rounded-2xl flex flex-col items-center justify-center text-white text-center shadow-lg shadow-blue-200">
+                <div className="flex-shrink-0 w-20 h-20 bg-primary rounded-2xl flex flex-col items-center justify-center text-white text-center shadow-lg shadow-primary/10">
                   <span className="text-[10px] uppercase font-black opacity-70">{event.date.split(' ')[0]}</span>
                   <span className="text-2xl font-black">{event.date.split(' ')[1]}</span>
                 </div>
                 <div className="text-center md:text-left">
-                  <span className={`text-[10px] uppercase font-black tracking-widest ${event.country === 'UK' ? 'text-red-600 bg-red-50' : 'text-blue-600 bg-blue-50'} px-3 py-1 rounded-full mb-3 inline-block`}>
+                  <span className={`text-[10px] uppercase font-black tracking-widest ${event.country === 'UK' ? 'text-red-600 bg-red-50' : 'text-primary bg-primary/5'} px-3 py-1 rounded-full mb-3 inline-block`}>
                     {event.type}
                   </span>
                   <h3 className="text-xl md:text-2xl font-bold text-slate-900">{event.title}</h3>
@@ -61,7 +61,7 @@ const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ view = 'global' }) => {
                   </p>
                 </div>
               </div>
-              <button className="w-full md:w-auto bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-600 transition-all flex items-center justify-center gap-2">
+              <button className="w-full md:w-auto bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold hover:bg-primary transition-all flex items-center justify-center gap-2">
                 Register Free <i className="fa-solid fa-calendar-plus"></i>
               </button>
             </div>

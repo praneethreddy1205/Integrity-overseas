@@ -98,8 +98,12 @@ const Footer: React.FC<FooterProps> = ({ view = 'global', setView, contactNumber
                 <p className="text-slate-400 font-medium text-[10px]">+{contactNumber.slice(0, 2)} {contactNumber.slice(2)}</p>
               </div>
               <div className="flex gap-2">
+                <i className="fa-solid fa-phone text-primary text-sm"></i>
+                <p className="text-slate-400 font-medium text-[10px]">+91 8333838252</p>
+              </div>
+              <div className="flex gap-2">
                 <i className="fa-solid fa-envelope text-primary text-sm"></i>
-                <p className="text-slate-400 font-medium text-[10px]">integrityoverseaz@gmail.com</p>
+                <p className="text-slate-400 font-medium text-[10px]">integrityoverseazz@gmail.com</p>
               </div>
               <button onClick={(e) => handleLink(e, 'contact')} className="w-full py-1.5 bg-white text-slate-900 rounded-[0.5rem] font-black hover:bg-primary hover:text-white transition-all text-[10px]">Visit Our Office</button>
             </div>

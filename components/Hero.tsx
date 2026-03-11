@@ -49,7 +49,7 @@ const Hero: React.FC<HeroProps> = ({ view, onAction }) => {
             </div>
 
             <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-primary opacity-5 blur-3xl rounded-full"></div>
-            <div className="absolute -top-10 -left-10 w-48 h-48 bg-blue-600 opacity-5 blur-3xl rounded-full"></div>
+            <div className="absolute -top-10 -left-10 w-48 h-48 bg-primary opacity-5 blur-3xl rounded-full"></div>
           </div>
         </div>
       </div>

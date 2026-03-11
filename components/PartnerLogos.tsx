@@ -3,7 +3,7 @@ import React from 'react';
 
 const partners = [
   { name: 'Ivy League', icon: 'fa-building-columns', color: 'text-red-800' },
-  { name: 'Russell Group', icon: 'fa-graduation-cap', color: 'text-blue-900' },
+  { name: 'Russell Group', icon: 'fa-graduation-cap', color: 'text-primary' },
   { name: 'Group of Eight', icon: 'fa-award', color: 'text-amber-700' },
   { name: 'U15 Canada', icon: 'fa-map-location-dot', color: 'text-red-600' },
   { name: 'EUA', icon: 'fa-earth-europe', color: 'text-indigo-800' },

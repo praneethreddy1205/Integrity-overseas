@@ -7,7 +7,7 @@ import harvardImg from './assets/harvardimage.jpeg';
 import nyuImg from './assets/newyorkuniversity.jpeg';
 import oxfordImg from './assets/oxford.jpeg';
 
-const universityData: Record<string, { name: string; rank: string; location: string; img: string; desc: string }[]> = {
+export const universityData: Record<string, { name: string; rank: string; location: string; img: string; desc: string }[]> = {
   UK: [
     { name: 'University of Oxford', rank: '#1 World', location: 'Oxford, England', img: oxfordImg, desc: 'The oldest university in the English-speaking world.' },
     { name: 'University of Cambridge', rank: '#2 World', location: 'Cambridge, England', img: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=600', desc: 'A global leader in research and innovation.' },
@@ -66,12 +66,12 @@ const UniversityList: React.FC<UniversityListProps> = ({ country, onViewCourses 
             <div key={idx} className="bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all group">
               <div className="h-48 overflow-hidden relative">
                 <img src={uni.img} alt={uni.name} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" />
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-black shadow-sm uppercase tracking-widest text-blue-600">
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-black shadow-sm uppercase tracking-widest text-primary">
                   {uni.rank}
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">{uni.name}</h3>
+                <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-primary transition-colors">{uni.name}</h3>
                 <p className="text-xs text-slate-50 font-semibold bg-slate-400/20 text-slate-500 px-2 py-1 rounded-md inline-block mb-4">
                   <i className="fa-solid fa-location-dot mr-1"></i> {uni.location}
                 </p>

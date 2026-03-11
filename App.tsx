@@ -15,6 +15,7 @@ import UniversitiesHub from './components/UniversitiesHub';
 import CoursesHub from './components/CoursesHub';
 import Login from './components/Login';
 import globalVisaGuidance from './components/assets/global_visa_guidance.png';
+import { universityData } from './components/UniversityList';
 
 const destinationsList = ['UK', 'USA', 'Canada', 'Australia', 'Europe', 'New Zealand'];
 const CONTACT_NUMBER = "917680976577";
@@ -46,26 +47,44 @@ const PageHero = ({ title, subtitle, bgImg }: { title: string, subtitle: string,
   </section>
 );
 
-const GlobalCTA = ({ onAction }: { onAction: (a: string) => void }) => (
-  <section className="py-32 bg-[#f4f9f9]">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="bg-gradient-to-br from-primary to-dark-green rounded-[5rem] p-20 md:p-32 text-center text-white relative overflow-hidden shadow-2xl">
-        <div className="relative z-10">
-          <h2 className="text-4xl md:text-7xl font-black mb-10 leading-tight">Start Your Global <br />Legacy Today</h2>
-          <p className="text-xl text-white/80 mb-16 max-w-2xl mx-auto font-medium leading-relaxed">Join thousands of students who achieved their dreams with Integrity Overseas. Expert counseling is just a click away.</p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <button onClick={() => onAction('consultation')} className="bg-white text-primary px-16 py-6 rounded-[2rem] font-black text-2xl hover:scale-105 transition-all shadow-2xl">Book Free Consultation</button>
-            <button onClick={() => onAction('whatsapp')} className="bg-emerald-500 text-white px-16 py-6 rounded-[2rem] font-black text-2xl hover:bg-emerald-600 transition-all shadow-2xl flex items-center justify-center gap-3">
-              <i className="fa-brands fa-whatsapp"></i> Chat Now
-            </button>
+const countryBgs: Record<string, string> = {
+  UK: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80",
+  USA: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&q=80",
+  Canada: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&q=80",
+  Australia: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&q=80",
+  Europe: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80",
+  "New Zealand": "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?auto=format&fit=crop&q=80"
+};
+
+const GlobalCTA = ({ onAction, country }: { onAction: (a: string) => void, country?: string }) => {
+  const unis = country && universityData[country] ? universityData[country].slice(0, 4) : null;
+  const bgImg = country && countryBgs[country] ? countryBgs[country] : null;
+
+  return (
+    <section className="py-32 bg-[#f4f9f9]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-gradient-to-br from-primary to-primary-dark rounded-[5rem] relative overflow-hidden shadow-2xl">
+          {bgImg && (
+            <img src={bgImg} alt={`${country} scenery`} className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-60 grayscale-[0.3]" />
+          )}
+
+          <div className="relative z-10 p-20 md:p-32 text-center text-white">
+            <h2 className="text-4xl md:text-7xl font-black mb-10 leading-tight drop-shadow-lg">Start Your Global <br />Legacy Today</h2>
+            <p className="text-xl text-white/90 mb-16 max-w-2xl mx-auto font-bold leading-relaxed drop-shadow-md">Join thousands of students who achieved their dreams with Integrity Overseas. Expert counseling is just a click away.</p>
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <button onClick={() => onAction('consultation')} className="bg-white text-primary px-16 py-6 rounded-[2rem] font-black text-2xl hover:scale-105 transition-all shadow-2xl">Book Free Consultation</button>
+              <button onClick={() => onAction('whatsapp')} className="bg-emerald-500 text-white px-16 py-6 rounded-[2rem] font-black text-2xl hover:bg-emerald-600 transition-all shadow-2xl flex items-center justify-center gap-3">
+                <i className="fa-brands fa-whatsapp"></i> Chat Now
+              </button>
+            </div>
           </div>
+          <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-white/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-[40rem] h-[40rem] bg-white/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4 pointer-events-none"></div>
         </div>
-        <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-white/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4"></div>
-        <div className="absolute bottom-0 left-0 w-[40rem] h-[40rem] bg-white/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4"></div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const StudyAbroadHeader = ({ setView }: { setView: (v: string) => void }) => (
   <>
@@ -158,7 +177,7 @@ const ConsultationPage = () => {
                   <option value="Australia">Preferred Country: Australia</option>
                   <option value="Other">Other</option>
                 </select>
-                <button type="submit" className="w-full py-6 bg-primary text-white rounded-3xl font-black text-xl shadow-2xl shadow-primary/30 hover:bg-dark-green transition-all transform hover:scale-[1.02]">Confirm via WhatsApp</button>
+                <button type="submit" className="w-full py-6 bg-primary text-white rounded-3xl font-black text-xl shadow-2xl shadow-primary/30 hover:bg-primary-dark transition-all transform hover:scale-[1.02]">Confirm via WhatsApp</button>
               </form>
               <p className="mt-8 text-center text-slate-400 text-xs font-bold uppercase tracking-widest">Fastest response within 2 business hours</p>
             </div>
@@ -369,7 +388,7 @@ const ContactPage = ({ onAction }: { onAction: (a: string) => void }) => {
                 </div>
                 <div className="flex gap-8">
                   <div className="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center text-3xl flex-shrink-0"><i className="fa-solid fa-envelope"></i></div>
-                  <div><p className="text-xl font-black">Counseling Support</p><p className="text-slate-400 text-lg">integrityoverseaz@gmail.com</p></div>
+                  <div><p className="text-xl font-black">Counseling Support</p><p className="text-slate-400 text-lg">integrityoverseazz@gmail.com</p></div>
                 </div>
               </div>
             </div>
@@ -380,7 +399,7 @@ const ContactPage = ({ onAction }: { onAction: (a: string) => void }) => {
                 <input required type="email" placeholder="Email Address" className="w-full px-8 py-5 rounded-2xl bg-slate-50 border border-slate-200 focus:border-primary outline-none font-bold text-slate-700" onChange={e => setFormState({ ...formState, email: e.target.value })} />
                 <input required type="tel" placeholder="Mobile Number" className="w-full px-8 py-5 rounded-2xl bg-slate-50 border border-slate-200 focus:border-primary outline-none font-bold text-slate-700" onChange={e => setFormState({ ...formState, phone: e.target.value })} />
                 <textarea required placeholder="How can we help you?" className="w-full px-8 py-5 rounded-2xl bg-slate-50 border border-slate-200 focus:border-primary outline-none min-h-[200px] font-bold text-slate-700" onChange={e => setFormState({ ...formState, message: e.target.value })}></textarea>
-                <button type="submit" className="w-full py-6 bg-primary text-white rounded-2xl font-black text-2xl shadow-xl shadow-primary/30 hover:bg-dark-green transition-all transform hover:scale-[1.02]">Send via WhatsApp</button>
+                <button type="submit" className="w-full py-6 bg-primary text-white rounded-2xl font-black text-2xl shadow-xl shadow-primary/30 hover:bg-primary-dark transition-all transform hover:scale-[1.02]">Send via WhatsApp</button>
               </form>
             </div>
           </div>
@@ -499,7 +518,7 @@ const App: React.FC = () => {
                   <SuccessStories view={currentView} />
 
                   <AIAssistant />
-                  <GlobalCTA onAction={handleAction} />
+                  <GlobalCTA onAction={handleAction} country={currentView} />
                 </div>
               </div>
             </div>
@@ -522,9 +541,9 @@ const App: React.FC = () => {
         </div>
       )}
 
-      <button onClick={() => handleAction('whatsapp')} className="fixed bottom-10 right-10 z-[90] w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform">
-        <i className="fa-brands fa-whatsapp"></i>
-      </button>
+      <a href={`https://wa.me/${CONTACT_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`} target="_blank" rel="noopener noreferrer" className="fixed bottom-10 right-10 z-[90] w-16 h-16 bg-[#25D366] text-white rounded-full flex flex-col items-center justify-center text-3xl shadow-[0_10px_40px_-10px_rgba(37,211,102,0.8)] hover:scale-110 transition-transform">
+        <i className="fa-brands fa-whatsapp drop-shadow-md"></i>
+      </a>
 
       <main className="min-h-screen">
         <Hero view={currentView} onAction={handleAction} />

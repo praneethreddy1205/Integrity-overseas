@@ -33,7 +33,7 @@ const UKDetailHub: React.FC = () => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all ${
                   activeTab === tab.id 
-                    ? 'bg-blue-600 text-white shadow-xl shadow-blue-200 scale-105' 
+                    ? 'bg-primary text-white shadow-xl shadow-primary/10 scale-105' 
                     : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
                 }`}
               >
@@ -49,9 +49,9 @@ const UKDetailHub: React.FC = () => {
                 <div className="space-y-6">
                   <h3 className="text-2xl font-black text-slate-900">Intakes & Deadlines</h3>
                   <div className="space-y-4">
-                    <div className="p-6 rounded-2xl border-l-4 border-blue-600 bg-blue-50">
-                      <p className="font-black text-blue-900">September Intake (Primary)</p>
-                      <p className="text-sm text-blue-800/70 mt-1">Deadlines: Jan to June. Largest selection of courses and scholarship opportunities.</p>
+                    <div className="p-6 rounded-2xl border-l-4 border-primary bg-primary/5">
+                      <p className="font-black text-primary">September Intake (Primary)</p>
+                      <p className="text-sm text-primary mt-1">Deadlines: Jan to June. Largest selection of courses and scholarship opportunities.</p>
                     </div>
                     <div className="p-6 rounded-2xl border-l-4 border-indigo-600 bg-indigo-50">
                       <p className="font-black text-indigo-900">January Intake (Secondary)</p>
@@ -61,7 +61,7 @@ const UKDetailHub: React.FC = () => {
                 </div>
                 <div className="bg-slate-900 rounded-3xl p-8 text-white">
                   <h4 className="font-bold mb-6 flex items-center gap-2">
-                    <i className="fa-solid fa-list-check text-blue-400"></i> Requirements
+                    <i className="fa-solid fa-list-check text-primary"></i> Requirements
                   </h4>
                   <ul className="space-y-4 text-sm text-slate-300">
                     <li className="flex items-center gap-3"><i className="fa-solid fa-circle-check text-emerald-400"></i> Academic Transcripts (Minimum 60%+)</li>
@@ -81,8 +81,8 @@ const UKDetailHub: React.FC = () => {
                   <h4 className="font-black text-slate-900 mb-2">Student Route Visa</h4>
                   <p className="text-sm text-slate-600">The primary visa for long-term study. Requires 70 points under the points-based system.</p>
                 </div>
-                <div className="p-8 rounded-3xl bg-blue-50 border border-blue-100">
-                  <div className="text-3xl text-blue-600 mb-4"><i className="fa-solid fa-briefcase"></i></div>
+                <div className="p-8 rounded-3xl bg-primary/5 border border-primary/20">
+                  <div className="text-3xl text-primary mb-4"><i className="fa-solid fa-briefcase"></i></div>
                   <h4 className="font-black text-slate-900 mb-2">Graduate Route (PSW)</h4>
                   <p className="text-sm text-slate-600">Stay and work in the UK for 2 years after completing your degree (3 years for PhD).</p>
                 </div>
@@ -121,9 +121,9 @@ const UKDetailHub: React.FC = () => {
                         <span className="font-medium text-red-900">Inside London</span>
                         <span className="font-black text-red-900">£1,334 / mo</span>
                       </div>
-                      <div className="flex justify-between items-center p-4 bg-blue-50 rounded-xl">
-                        <span className="font-medium text-blue-900">Outside London</span>
-                        <span className="font-black text-blue-900">£1,023 / mo</span>
+                      <div className="flex justify-between items-center p-4 bg-primary/5 rounded-xl">
+                        <span className="font-medium text-primary">Outside London</span>
+                        <span className="font-black text-primary">£1,023 / mo</span>
                       </div>
                     </div>
                   </div>
@@ -137,7 +137,7 @@ const UKDetailHub: React.FC = () => {
                   <div className="relative z-10">
                     <h4 className="text-2xl font-black mb-4">GREAT Scholarships</h4>
                     <p className="text-slate-400 text-sm mb-6">Offered by the UK government and participating universities for students across various disciplines.</p>
-                    <div className="text-3xl font-black text-blue-400">£10,000 Value</div>
+                    <div className="text-3xl font-black text-primary">£10,000 Value</div>
                   </div>
                   <i className="fa-solid fa-award absolute -right-4 -bottom-4 text-white/5 text-9xl group-hover:scale-110 transition-transform"></i>
                 </div>

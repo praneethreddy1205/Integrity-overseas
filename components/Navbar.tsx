@@ -49,9 +49,9 @@ const Navbar: React.FC<NavbarProps> = ({ setView, currentView, contactNumber = "
                 <span className="tracking-wide">Plot no 26, Phase-1, Vanasthalipuram, Hyderabad</span>
               </div>
               <span className="text-white/20 hidden sm:block">|</span>
-              <a href="tel:+916301387792" className="flex items-center gap-3 hover:text-primary transition-colors">
+              <a href="tel:+918333838252" className="flex items-center gap-3 hover:text-primary transition-colors">
                 <i className="fa-solid fa-phone text-primary justify-center text-xs"></i>
-                <span className="tracking-wide">+91 6301387792</span>
+                <span className="tracking-wide">+91 8333838252</span>
               </a>
               <span className="text-white/20 hidden sm:block">|</span>
               <div className="flex items-center gap-3">
@@ -61,7 +61,7 @@ const Navbar: React.FC<NavbarProps> = ({ setView, currentView, contactNumber = "
               <span className="text-white/20 hidden sm:block">|</span>
               <div className="flex items-center gap-3">
                 <i className="fa-solid fa-envelope text-primary text-xs"></i>
-                <span className="tracking-wide">integrityoverseaz@gmail.com</span>
+                <span className="tracking-wide">integrityoverseazz@gmail.com</span>
               </div>
               <span className="text-white/20 hidden lg:block">|</span>
               <div className="flex items-center gap-3 hidden lg:flex text-primary font-bold">
